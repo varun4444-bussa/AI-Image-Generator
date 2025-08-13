@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, Sparkles, LogIn } from 'lucide-react';
-import { FcGoogle } from 'react-icons/fc'; // Install with: npm install react-icons
+
 import { useAuth } from '../../contexts/AuthContext';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
-import { auth, googleProvider } from '../services/firebase';
-import { signInWithPopup } from 'firebase/auth';
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +14,7 @@ const Login: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login, loginWithGoogle } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,18 +31,7 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    setError('');
-    setIsLoading(true);
-    try {
-      await loginWithGoogle();
-      navigate('/dashboard');
-    } catch (err) {
-      setError('Google login failed');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ background: '#e0f2fe' }}>
@@ -66,25 +54,7 @@ const Login: React.FC = () => {
         <Card className="p-10 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full -translate-y-16 translate-x-16 pointer-events-none" />
 
-          {/* Google Login Button */}
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            className="w-full text-lg py-4 flex items-center justify-center mb-4"
-            onClick={handleGoogleLogin}
-            isLoading={isLoading}
-          >
-            <FcGoogle className="w-6 h-6 mr-2" />
-            Sign in with Google
-          </Button>
 
-          {/* Divider */}
-          <div className="flex items-center my-4">
-            <div className="flex-grow border-t border-gray-300/50 dark:border-gray-600/50" />
-            <span className="mx-2 text-gray-400 text-sm">or</span>
-            <div className="flex-grow border-t border-gray-300/50 dark:border-gray-600/50" />
-          </div>
 
           {error && (
             <div className="bg-gradient-to-r from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border border-red-200/50 dark:border-red-800/50 rounded-xl p-4 backdrop-blur-sm">

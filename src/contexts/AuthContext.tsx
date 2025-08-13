@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContextType, User } from '../types';
-import { auth, googleProvider } from '../services/firebase';
-import { signInWithPopup } from 'firebase/auth';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -58,28 +56,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const loginWithGoogle = async () => {
-    setIsLoading(true);
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const firebaseUser = result.user;
-      const appUser: User = {
-        id: firebaseUser.uid,
-        email: firebaseUser.email || '',
-        displayName: firebaseUser.displayName || '',
-        photoURL: firebaseUser.photoURL || '',
-        subscription: 'free',
-        generationsToday: 0,
-        maxGenerations: 20
-      };
-      setUser(appUser);
-      localStorage.setItem('ai-canvas-user', JSON.stringify(appUser));
-    } catch (error) {
-      throw new Error('Google login failed');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   const register = async (email: string, password: string, displayName: string) => {
     setIsLoading(true);
@@ -117,7 +94,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout, updateUser, loginWithGoogle }}>
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
