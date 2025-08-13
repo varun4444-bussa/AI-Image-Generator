@@ -20,7 +20,7 @@ A modern, responsive web application for generating AI-powered images using the 
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-vercel-url.vercel.app) *(Add your Vercel URL after deployment)*
+[View Live Demo](https://ai-image-generator-six-opal.vercel.app/) *(Add your Vercel URL after deployment)*
 
 ## 🛠️ Tech Stack
 
@@ -156,31 +156,11 @@ Currently, the project uses the Pollinations AI API which doesn't require API ke
 2. Configure build script in `package.json`
 3. Deploy using GitHub Actions
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [Pollinations AI](https://pollinations.ai/) for the image generation API
-- [React](https://reactjs.org/) for the amazing framework
-- [Tailwind CSS](https://tailwindcss.com/) for the beautiful styling
-- [Vite](https://vitejs.dev/) for the fast build tool
-- [Lucide React](https://lucide.dev/) for the beautiful icons
-
 ## 📞 Support
 
 If you have any questions or need help:
 - Create an issue on GitHub
-- Contact: [Your Email]
+- Contact: [babuvarun988@gmail.com]
 - Project URL: [https://github.com/varun4444-bussa/AI-Image-Generator](https://github.com/varun4444-bussa/AI-Image-Generator)
 
 ---
